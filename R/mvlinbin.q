@@ -11,7 +11,7 @@ mvlinbin <- function(X, r = 7, padding = 0)
 
   ranges <- apply(X, 2, range)
   spreads <- apply(ranges, 2, diff)
-  spread <- max(spreads) + padding
+  spread <- max(spreads) + 2 * padding
   delta <- spread / M
   spread <- spread / 2
 

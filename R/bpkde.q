@@ -1,5 +1,5 @@
 bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
-                  r = 7, level = 3)
+                  r = 7, padding = 3)
 {
   name <- deparse(substitute(X))
 
@@ -14,7 +14,7 @@ bpkde <- function(X, alphas, kernel = dnorm, bw = bw.SJ, score.fun = M1,
   }
 
   bws <- mvbw(X, alphas, bw)
-  xbin <- mvlinbin(X, r, padding = (level + 0.5)*max(bws$lambdas))
+  xbin <- mvlinbin(X, r, padding = padding * max(bws$lambdas))
   M <- xbin$M
   d <- xbin$d
   xbin.dft <- fft(xbin$xi) / M^d
